@@ -1,0 +1,55 @@
+[
+  { 
+    "id": 1,
+    "name": "Mate Imperial Alpaca",
+    "description": "Mate Imperial Alpaca Personalizado Calabaza Color Negro Y Pico de Loro Inox",
+    "price": 77391,
+    "image": "/img/tiendamate/mate1.png",
+    "category": "mate"
+  },
+  
+  { 
+    "id": 2,
+    "name": "Mate Torpedo Cuero",
+    "description": "Mate Torpedo Cuero Croco Alpaca Cincelado + Bombilla Pico de Loro",
+    "price": 75976,
+    "image": "/img/tiendamate/mate2.png",
+    "category": "mate"
+  },
+  
+  { 
+    "id": 3,
+    "name": "Tapa Especial",
+    "description": "Tapa Especial Para Mate Antiviento Alpaca Sol Arg",
+    "price": 32990,
+    "image": "/img/tiendamate/mate3.png",
+    "category": "accesorio"
+  },
+  
+  { 
+    "id": 4,
+    "name": "Mate Imperial Alpaca Con Patas",
+    "description": "Mate Imperial Con Patas De Sirena De Alpaca Y Bronce Orfebre Bordó Tallado",
+    "price": 445000,
+    "image": "/img/tiendamate/mate4.png",
+    "category": "mate"
+  },
+  
+  { 
+    "id": 5,
+    "name": "Mate Camionero Algarrobo",
+    "description": "Mate Camionero Algarrobo Personalizado Full Premium + Pico Loro",
+    "price": 39280,
+    "image": "/img/tiendamate/mate5.png",
+    "category": "mate"
+  },
+  
+  { 
+    "id": 6,
+    "name": "Mate Imperial Botitas",
+    "description": "Mate Imperial Botitas Flor De Lis Bronce Repujado + Bombilla",
+    "price": 695678,
+    "image": "/img/tiendamate/mate6.png",
+    "category": "mate"
+  }
+]
