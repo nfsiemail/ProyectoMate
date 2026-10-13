@@ -1,12 +1,22 @@
+nav {
+  display: flex;
+  align-items: center;
+}
+
 .nav-list {
+  list-style: none;
   display: flex;
   align-items: center;
   gap: 2rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
 }
 
 .nav-list a {
   font-weight: 500;
   transition: 0.25s;
+  text-decoration: none;
 }
 
 .nav-list a:hover {
@@ -15,19 +25,26 @@
 
 .incart {
   margin-left: 0.4rem;
-
   width: 22px;
   height: 22px;
-
   display: inline-flex;
   justify-content: center;
   align-items: center;
-
   border-radius: 50%;
-
   background: var(--primary);
   color: white;
-
   font-size: 0.75rem;
   font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  nav {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-list {
+    justify-content: center;
+    gap: 0.8rem 1.2rem;
+  }
 }
