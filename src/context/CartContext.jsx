@@ -1,14 +1,8 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-/* -------------------------------------------------------------------------- */
-/*                              CREAMOS CONTEXTO                              */
-/* -------------------------------------------------------------------------- */
 const CartContext = createContext();
 
-/* -------------------------------------------------------------------------- */
-/*                                 CUSTOM HOOK                                */
-/* -------------------------------------------------------------------------- */
 export const useCart = () => {
   const context = useContext(CartContext);
 
@@ -18,9 +12,6 @@ export const useCart = () => {
   return context;
 };
 
-/* -------------------------------------------------------------------------- */
-/*                                  PROVEEDOR                                 */
-/* -------------------------------------------------------------------------- */
 export const CartProvider = ({ children }) => {
   const navigate = useNavigate();
   const [cart, setCart] = useState([]);
@@ -30,13 +21,12 @@ export const CartProvider = ({ children }) => {
     return inCart;
   };
 
+  //Agregar producto al carrito
   const addItem = (item) => {
     if (isInCart(item)) {
       alert("El producto ya existe en el carrito");
       return;
     }
-    //Forma funcional "prev"
-    //setCart(prev => [...prev, item])
     setCart([...cart, item]);
     alert("Producto agregado al carrito 🎉");
   };
@@ -46,9 +36,6 @@ export const CartProvider = ({ children }) => {
     const updatedCart = cart.filter((element) => element.id !== id);
     setCart(updatedCart);
     alert("Producto eliminado ✅");
-
-    //Forma funcional "prev"
-    //setCart((prev) => prev.filter((element) => element.id !== id));
   };
 
   //Vacia el carrito

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ItemList } from "../ItemList/ItemList";
+import { getProducts } from "../../services/productsService";
 
 export const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
@@ -7,6 +8,7 @@ export const ItemListContainer = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    /*borrar cuando se use firebase
     fetch("/data/products.json")
       .then((res) => {
         if (!res.ok) {
@@ -18,7 +20,14 @@ export const ItemListContainer = () => {
       .then((data) => setProducts(data))
       .catch((error) => setErrors(error.message))
       .finally(() => setLoading(false));
-  }, []);
+  }, []);*/
+  //Con firebase
+  //Usamos la funcion del productsService.js
+    getProducts()
+      .then((data) => setProducts(data))
+      .catch((error) => setErrors(error.message))
+      .finally(() => setLoading(false));
+  }, []);//
 
   if (loading) return <p>Cargando...</p>;
   if (errors) return <p>{errors}</p>;
