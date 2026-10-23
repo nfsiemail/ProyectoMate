@@ -31,7 +31,6 @@ export const ProductFormContainer = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    //modificamos los estados para el "loading mientras se procesa"
     setErrors({});
     setLoading(true);
 

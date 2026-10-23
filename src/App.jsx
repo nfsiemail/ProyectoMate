@@ -16,6 +16,12 @@ function App() {
           <Route path="/product/:id" element={<ItemDetailContainer />} />
           {/* opcional: filtro por categorias */}
           <Route path="/category/:category" element={<ItemListContainer />} />
+          {/* admin routes */}
+          <Route path="/admin" element={<ProductFormContainer />} />
+          <Route 
+            path="/admin/product-success/:id"
+            element={<ProductSuccess />}
+          />
         </Routes>
       </main>
       <Footer />
