@@ -4,6 +4,7 @@ import { ProductFormUI } from "./ProductFormUI";
 import { validateProduct } from "../../../utils/validateProduct";
 import { uploadImage } from "../../../services/uploadImage";
 import { createProduct } from "../../../services/productsService";
+import { updateProduct } from "../../../services/productsService";
 import "./ProductFormContainer.css";
 
 export const ProductFormContainer = () => {
@@ -53,14 +54,22 @@ export const ProductFormContainer = () => {
         image: imageUrl,
       };
 
+
+      const { id } = useParams();
+      if (id) { //si se le manda un id, es porque estamos editando un producto existente
+        //editar
+        await updateProduct(id, productData);
+        navigate("/admin");
+    } else {
       //alta
-      const id = await createProduct(productData);
+      const newID = await createProduct(productData);
+
       //vaciar formulario
       setProduct({ name: "", price: "", category: "", description: "" });
       setFile(null);
 
       //navegar a la pagina de exito
-      navigate(`/admin/products/success/${id}`, { replace: true });
+      navigate(`/admin/products/success/${newID}`, { replace: true })}
     } catch (error) {
       setErrors({ general: error.message });
     } finally {

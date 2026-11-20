@@ -28,11 +28,11 @@ export const Dashboard = () => {
             ➕ Cargar
           </Link>
 
-          <Link to="#" className="action-card disabled">
+          <Link to={"/admin/products/manage/edit"} className="action-card">
             ✏️ Modificar
           </Link>
 
-          <Link to="#" className="action-card disabled">
+          <Link to={"/admin/products/manage/delete"} className="action-card">
             🗑️ Eliminar
           </Link>
         </div>

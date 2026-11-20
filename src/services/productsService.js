@@ -6,6 +6,8 @@ import {
   getDocs,
   query,
   where,
+  updateDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import { db } from "../firebase/config";
 
@@ -88,6 +90,32 @@ export const createProduct = async (productData) => {
     return docRef.id;
   } catch (error) {
     console.error("Error al crear producto:", error);
+    throw error;
+  }
+};
+
+/* -------------------------------------------------------------------------- */
+/*                           MODIFICAR PRODUCTO                               */
+/* -------------------------------------------------------------------------- */
+export const updateProduct = async (id, productData) => {
+  try {
+    const docRef = doc(productsRef, id);
+    await updateDoc(docRef, productData);
+  } catch (error) {
+    console.error("Error al modificar producto:", error);
+    throw error;
+  }
+};
+
+/* -------------------------------------------------------------------------- */
+/*                            ELIMINAR PRODUCTO                               */
+/* -------------------------------------------------------------------------- */
+export const deleteProduct = async (id) => {
+  try {
+    const docRef = doc(productsRef, id);
+    await deleteDoc(docRef);
+  } catch (error) {
+    console.error("Error al eliminar producto:", error);
     throw error;
   }
 };

@@ -8,19 +8,7 @@ export const ItemListContainer = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    /*borrar cuando se use firebase
-    fetch("/data/products.json")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Error al cargar los productos");
-        }
-
-        return res.json();
-      })
-      .then((data) => setProducts(data))
-      .catch((error) => setErrors(error.message))
-      .finally(() => setLoading(false));
-  }, []);*/
+   
   //Con firebase
   //Usamos la funcion del productsService.js
     getProducts()

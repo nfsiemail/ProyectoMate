@@ -15,21 +15,6 @@ export const ItemDetailContainer = () => {
     setLoading(true);
     setError(null);
 
-    /*borrar cuando esté listo firebase
-    fetch("/data/products.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const item = data.find((product) => String(product.id) === id);
-        if (item) {
-          setItemDetail(item);
-          return;
-        }
-        throw new Error("Elemento no encontrado");
-      })
-      .catch((error) => setError(error.message))
-      .finally(() => setLoading(false));
-  }, [id]);*/
-
   //Con firebase
   //Usamos la funcion del productsService.js
     getProductById(id)
