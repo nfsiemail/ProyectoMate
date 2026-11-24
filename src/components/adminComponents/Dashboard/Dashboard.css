@@ -114,3 +114,33 @@
   background: var(--card);
   border-color: var(--primary);
 }
+
+@media (max-width: 768px) {
+  .dashboard {
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .header-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .header-actions .btn {
+    width: 100%;
+  }
+
+  .actions-grid {
+    flex-direction: column;
+  }
+
+  .action-card {
+    width: 100%;
+  }
+}
