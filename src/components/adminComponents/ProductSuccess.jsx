@@ -8,13 +8,13 @@ export const ProductSuccess = () => {
     <section className="success-page">
       <div className="success-icon">✅</div>
 
-      <h2>Producto cargado con exito</h2>
+      <h2>¡Operación realizada con exito!</h2>
       <p>ID de producto: {id}</p>
-      <p>Puede cargar otro haciendo click en el boton.</p>
+      <p>Puede volver al menú haciendo click en el boton.</p>
 
       <div className="success-actions">
         <Link className="btn bg-success primary" to="/admin">
-          Cargar otro producto
+          Volver al dashboard
         </Link>
       </div>
     </section>

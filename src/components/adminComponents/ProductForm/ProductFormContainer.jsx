@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ProductFormUI } from "./ProductFormUI";
 import { validateProduct } from "../../../utils/validateProduct";
 import { uploadImage } from "../../../services/uploadImage";
-import { createProduct } from "../../../services/productsService";
-import { updateProduct } from "../../../services/productsService";
+import { createProduct, updateProduct } from "../../../services/productsService";
 import "./ProductFormContainer.css";
 
 export const ProductFormContainer = () => {
@@ -12,6 +11,7 @@ export const ProductFormContainer = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [file, setFile] = useState(null);
+  const { id } = useParams();
   const [product, setProduct] = useState({
     name: "",
     price: "",
@@ -31,10 +31,8 @@ export const ProductFormContainer = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setErrors({});
     setLoading(true);
-
     //validar inputs
     const newErrors = validateProduct({ ...product, file });
     if (Object.keys(newErrors).length > 0) {
@@ -46,7 +44,6 @@ export const ProductFormContainer = () => {
     try {
       //subir la imagen
       const imageUrl = await uploadImage(file);
-
       //armar la estructura del producto
       const productData = {
         ...product,
@@ -54,22 +51,20 @@ export const ProductFormContainer = () => {
         image: imageUrl,
       };
 
-
-      const { id } = useParams();
-      if (id) { //si se le manda un id, es porque estamos editando un producto existente
+      let productID = id;
+      if (productID) { //si se le manda un id, es porque estamos editando un producto existente
         //editar
-        await updateProduct(id, productData);
-        navigate("/admin");
-    } else {
-      //alta
-      const newID = await createProduct(productData);
-
+        await updateProduct(productID, productData);
+      } else {
+        //alta
+        productID = await createProduct(productData);
+      }
       //vaciar formulario
       setProduct({ name: "", price: "", category: "", description: "" });
       setFile(null);
-
       //navegar a la pagina de exito
-      navigate(`/admin/products/success/${newID}`, { replace: true })}
+      navigate(`/admin/products/success/${productID}`, { replace: true });
+
     } catch (error) {
       setErrors({ general: error.message });
     } finally {

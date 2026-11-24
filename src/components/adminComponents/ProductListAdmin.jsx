@@ -1,6 +1,6 @@
 import "./ProductListAdmin.css";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import {
   getProducts,
   deleteProduct,
@@ -10,6 +10,7 @@ export const ProductListAdmin = () => {
   const { mode } = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const loadProducts = async () => {
     setLoading(true);
@@ -35,8 +36,14 @@ export const ProductListAdmin = () => {
 
     if (!confirmed) return;
 
-    await deleteProduct(product.id);
-    await loadProducts();
+    try{
+      
+      await deleteProduct(product.id);
+      navigate(`/admin/products/success/${product.id}`, { replace: true });
+    } catch (error) {
+      console.error("Error al eliminar:", error);
+      alert("No se pudo eliminar el producto.");
+    }
   };
 
   if (loading) {
